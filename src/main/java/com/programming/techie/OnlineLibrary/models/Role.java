@@ -1,7 +1,5 @@
 package com.programming.techie.OnlineLibrary.models;
 
-
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,18 +13,13 @@ import lombok.Data;
 @Data
 @Entity
 
-public class Book {
+public class Role {
+	
 	@Id
-
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
-	private String author;
-	private String title;
-	private int year;
-	private int no_of_copies ;
+	private String role;
 	
-	@OneToMany(mappedBy = "book")
-	private List<Account> accounts;
-	
+	@OneToMany(mappedBy = "role")
+	private List<User> users;
 }
-
