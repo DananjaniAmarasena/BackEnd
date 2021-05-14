@@ -1,24 +1,22 @@
 package com.programming.techie.OnlineLibrary.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
 @Data
 @Entity
-@Table
-public class Admin {
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private int id;
-	private String name;
-	private String email;
-	private String phone;
-	
+public class Account {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int accountId;
+	@ManyToOne
+	private User user;
+	@ManyToOne
+	private Book book;
 }

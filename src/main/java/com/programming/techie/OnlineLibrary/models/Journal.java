@@ -5,11 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table
+import lombok.Data;
 
+
+@Data
+@Entity
 public class Journal {
 	@Id
 	@Column(name= "j_id")
@@ -57,6 +60,12 @@ public class Journal {
 	public void setUser_type(String user_type) {
 		this.user_type = user_type;
 	}
+	@GeneratedValue(strategy= GenerationType.TABLE)
+	private int id;
+	private String title;
+	
+	@ManyToOne
+	private User author;
 	
 	
 }
