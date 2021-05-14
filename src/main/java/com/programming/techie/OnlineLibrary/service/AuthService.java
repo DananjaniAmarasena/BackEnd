@@ -14,6 +14,8 @@ import com.programming.techie.OnlineLibrary.models.User;
 import com.programming.techie.OnlineLibrary.repository.UserRepository;
 import com.programming.techie.OnlineLibrary.security.JwtProvider;
 
+import java.util.Optional;
+
 @Service
 public class AuthService {
 	
@@ -28,7 +30,8 @@ public class AuthService {
 	
 	@Autowired 
 	private JwtProvider jwtProvider;
-	
+
+
 	public void signup(RegisterRequest registerRequest) {
 		User user = new User();
 		user.setUserName(registerRequest.getUserName());
@@ -50,4 +53,9 @@ public class AuthService {
 		return jwtProvider.generateToken(authenticate);
 	}
 
+	public static Optional<org.springframework.security.core.userdetails.User> getCurrentUser() {
+		org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User)SecurityContextHolder.
+				getContext().getAuthentication().getPrincipal();
+		return Optional.of(principal);
+	}
 }

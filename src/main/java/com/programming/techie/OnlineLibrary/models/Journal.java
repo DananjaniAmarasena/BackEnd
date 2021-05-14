@@ -21,8 +21,9 @@ public class Journal {
 	private String j_writer;
 	@Column(name = "user_type")
 	private String user_type;
-	
-	
+	@Column(name = "content")
+	private String content;
+
 	public int getJ_id() {
 		return j_id;
 	}
@@ -38,6 +39,15 @@ public class Journal {
 	public String getJ_writer() {
 		return j_writer;
 	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	public void setJ_writer(String j_writer) {
 		this.j_writer = j_writer;
 	}
