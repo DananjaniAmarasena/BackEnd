@@ -18,9 +18,9 @@ public class JournalController {
     private JournalService journalService;
 
     @PostMapping("/")
-    public ResponseEntity createJournal(@RequestBody JournalDto journalDto){
+    public ResponseEntity<JournalDto> createJournal(@RequestBody JournalDto journalDto){
         journalService.createJournal(journalDto);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/all")
@@ -28,7 +28,7 @@ public class JournalController {
         return new ResponseEntity<>(journalService.showAllJournals(), HttpStatus.OK);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/get/{j_id}")
     public ResponseEntity<JournalDto> getSingleJournal(@PathVariable @RequestBody Long j_id){
         return new ResponseEntity<>(journalService.readSinglJournal(j_id),HttpStatus.OK);
     }
