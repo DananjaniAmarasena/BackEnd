@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.programming.techie.OnlineLibrary.dto.LoginRequest;
 import com.programming.techie.OnlineLibrary.dto.RegisterRequest;
 import com.programming.techie.OnlineLibrary.service.AuthService;
+import com.programming.techie.OnlineLibrary.service.AuthenticationResponse;
 
 @RestController 
 @RequestMapping("/api/auth")
@@ -28,8 +29,8 @@ public class AuthController {
 		return (ResponseEntity) new ResponseEntity(HttpStatus.OK);
 	}
 	
-	@PostMapping("/login") 
-	public String login(@RequestBody LoginRequest loginRequest) {
-		return authService.login(loginRequest);
-	} 
+	@PostMapping("/login")
+    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest) {
+        return authService.login(loginRequest);
+    }
 }
