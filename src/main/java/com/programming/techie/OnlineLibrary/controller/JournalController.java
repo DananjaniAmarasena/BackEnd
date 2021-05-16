@@ -2,7 +2,8 @@ package com.programming.techie.OnlineLibrary.controller;
 
 
 import com.programming.techie.OnlineLibrary.dto.JournalDto;
-import com.programming.techie.OnlineLibrary.security.JournalService;
+import com.programming.techie.OnlineLibrary.service.JournalService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,9 @@ public class JournalController {
     private JournalService journalService;
 
     @PostMapping("/")
-    public ResponseEntity createJournal(@RequestBody JournalDto journalDto){
+    public ResponseEntity<JournalDto> createJournal(@RequestBody JournalDto journalDto){
         journalService.createJournal(journalDto);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/all")

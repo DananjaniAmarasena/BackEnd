@@ -1,7 +1,6 @@
 package com.programming.techie.OnlineLibrary.models;
 
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,6 +19,7 @@ public class Book {
 
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
+	private String img;
 	private String author;
 	private String title;
 	private int year;

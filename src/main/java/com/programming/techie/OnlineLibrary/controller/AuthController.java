@@ -3,6 +3,7 @@ package com.programming.techie.OnlineLibrary.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ import com.programming.techie.OnlineLibrary.service.AuthService;
 
 @RestController 
 @RequestMapping("/api/auth")
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AuthController {
 	
 	@Autowired

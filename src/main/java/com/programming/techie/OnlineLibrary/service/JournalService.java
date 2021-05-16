@@ -1,12 +1,10 @@
-package com.programming.techie.OnlineLibrary.security;
+package com.programming.techie.OnlineLibrary.service;
 
 import com.programming.techie.OnlineLibrary.dto.JournalDto;
 import com.programming.techie.OnlineLibrary.exception.JournalNotFoundException;
 import com.programming.techie.OnlineLibrary.models.Journal;
 import com.programming.techie.OnlineLibrary.repository.JournalRepository;
-import com.programming.techie.OnlineLibrary.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,9 +39,8 @@ public class JournalService {
 
     private JournalDto mapFromJournaltoDto(Journal journal){
         JournalDto journalDto = new JournalDto();
-        journalDto.setJ_id(journal.getJ_id());
-        journalDto.setJ_title(journal.getJ_title());
-        journalDto.setJ_writer(journal.getJ_writer());
+        journalDto.setId(journal.getId());
+        journalDto.setTitle(journal.getTitle());
         journalDto.setUser_type(journal.getUser_type());
         journalDto.setContent(journal.getContent());
         return journalDto;
@@ -53,12 +50,11 @@ public class JournalService {
 
     public Journal mapFromDtoToJournal(JournalDto journalDto){
         Journal journal = new Journal();
-        journal.setJ_title(journalDto.getJ_title());
-        journal.setJ_writer(journalDto.getJ_writer());
+        journal.setTitle(journalDto.getTitle());
         journal.setUser_type(journalDto.getUser_type());
         journal.setContent(journalDto.getContent());
-        User loggedInUser=  authService.getCurrentUser().orElseThrow(()->new IllegalArgumentException("No User Logged in"));
-        journal.setUser_type(loggedInUser.getUsername());
+        com.programming.techie.OnlineLibrary.models.User loggedInUser= authService.getCurrentUser().get();
+        journal.setAuthor(loggedInUser);
         return journal;
 
 
