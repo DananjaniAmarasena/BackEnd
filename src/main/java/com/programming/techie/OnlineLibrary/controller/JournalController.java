@@ -29,7 +29,7 @@ public class JournalController {
         return new ResponseEntity<>(journalService.showAllJournals(), HttpStatus.OK);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/get/{j_id}")
     public ResponseEntity<JournalDto> getSingleJournal(@PathVariable @RequestBody Long j_id){
         return new ResponseEntity<>(journalService.readSinglJournal(j_id),HttpStatus.OK);
     }
