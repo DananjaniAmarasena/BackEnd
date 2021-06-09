@@ -23,7 +23,7 @@ public class JwtProvider{
     }
 
     public String generateToken (Authentication authentication){
-        User principal = (User) authentication.getPrincipal();
+      User principal = (User) authentication.getPrincipal();
         return Jwts.builder()
                 .setSubject(principal.getUsername())
                 .signWith(key)

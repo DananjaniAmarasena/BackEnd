@@ -25,7 +25,7 @@ public class JournalController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public ResponseEntity<List<JournalDto>> showAllJournals(){
         return new ResponseEntity<>(journalService.showAllJournals(), HttpStatus.OK);
     }

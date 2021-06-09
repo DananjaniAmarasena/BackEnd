@@ -1,4 +1,4 @@
- package com.programming.techie.OnlineLibrary.models;
+package com.programming.techie.OnlineLibrary.models;
 
 import java.util.List;
 
@@ -10,20 +10,24 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-
 import lombok.Data;
 
-@Data
 @Entity
-
-public class Role {
+@Data
+public class Category {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
-	private String role;
+	private String name;
 	
-	@JsonBackReference(value = "user_role")
-	@OneToMany(mappedBy = "role")
-	private List<User> users;
+	@JsonBackReference(value = "book_category")
+	@OneToMany(mappedBy = "category")
+	private List<Book> books;
+	
+	@JsonBackReference(value = "journal_category")
+	@OneToMany(mappedBy = "category")
+	private List<Journal> journals;
+	
+
 }

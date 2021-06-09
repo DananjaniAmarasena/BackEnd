@@ -24,6 +24,9 @@ public class Journal {
 	@ManyToOne
 	private User author;
 	
+	@ManyToOne
+	private Category category;
+	
 	
 }
 
